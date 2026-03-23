@@ -1,23 +1,34 @@
-<div class="dish-card" *ngIf="dish">
-  <div class="dish-image" [style.backgroundImage]="'url(' + dish.imageUrl + ')'">
-    <div class="badge-container" *ngIf="dish.type">
-      <span class="badge">{{ dish.type }}</span>
+<div class="dish-card premium-card" *ngIf="dish">
+  <!-- Left Side: Image -->
+  <div class="image-wrapper">
+    <div class="dish-image" [style.backgroundImage]="'url(' + dish.imageUrl + ')'"></div>
+    <div class="type-badge glass-badge" *ngIf="dish.type">
+      {{ dish.type }}
     </div>
   </div>
   
-  <div class="dish-body">
-    <div class="team-badge">
-       {{ dish.teamName }} 🌟
+  <!-- Right Side: Content -->
+  <div class="content-wrapper">
+    <div class="header-row">
+      <div class="team-badge">
+         <span class="sparkle">✦</span> {{ dish.teamName }} 
+      </div>
     </div>
     
     <h3 class="dish-title">{{ dish.dishName }}</h3>
     
-    <div class="dish-features">
-      <div class="feature-item">
-         <span class="dot"></span> <span class="price">{{ dish.price }}</span>
+    <div class="meta-grid">
+      <div class="meta-item">
+         <div class="icon-box">
+           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+         </div>
+         <span class="meta-text price">{{ dish.price }}</span>
       </div>
-      <div class="feature-item">
-         <span class="dot"></span> <span>{{ dish.dateAvailable }}</span>
+      <div class="meta-item">
+         <div class="icon-box">
+           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+         </div>
+         <span class="meta-text date">{{ dish.dateAvailable }}</span>
       </div>
     </div>
     
@@ -26,15 +37,23 @@
         {{ dish.description }}
       </p>
       <button 
-        class="btn-link" 
+        class="read-more-btn" 
         (click)="showFullDescription = !showFullDescription" 
         *ngIf="isTruncatable">
-        {{ showFullDescription ? '− Thu gọn' : '+ Chi tiết' }}
+        {{ showFullDescription ? '− Thu gọn' : '+ Xem chi tiết' }}
       </button>
     </div>
     
-    <button class="order-btn" (click)="order.emit(dish)">
-       Thưởng thức
-    </button>
+    <div class="action-footer">
+      <button class="order-btn" (click)="order.emit(dish)">
+        <span class="btn-text">Thưởng thức</span>
+        <div class="btn-icon-wrapper">
+          <svg class="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </div>
+      </button>
+    </div>
   </div>
 </div>
