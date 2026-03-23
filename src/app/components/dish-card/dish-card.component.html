@@ -1,6 +1,6 @@
 <div class="dish-card premium-card" *ngIf="dish">
   <!-- Left Side: Image -->
-  <div class="image-wrapper">
+  <div class="image-wrapper" (click)="openDetail()" style="cursor: pointer;">
     <div class="dish-image" [style.backgroundImage]="'url(' + dish.imageUrl + ')'"></div>
     <div class="type-badge glass-badge" *ngIf="dish.type">
       {{ dish.type }}
@@ -9,22 +9,22 @@
   
   <!-- Right Side: Content -->
   <div class="content-wrapper">
-    <div class="header-row">
+    <div class="header-row" (click)="openDetail()" style="cursor: pointer;">
       <div class="team-badge">
          <span class="sparkle">✦</span> {{ dish.teamName }} 
       </div>
     </div>
     
-    <h3 class="dish-title">{{ dish.dishName }}</h3>
+    <h3 class="dish-title" (click)="openDetail()" style="cursor: pointer;">{{ dish.dishName }}</h3>
     
     <div class="meta-grid">
       <div class="meta-item">
          <div class="icon-box">
            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
          </div>
-         <span class="meta-text price">{{ dish.price }}</span>
+         <span class="meta-text price">{{ formattedPrice }} đ</span>
       </div>
-      <div class="meta-item">
+      <div class="meta-item" *ngIf="dish.dateAvailable && dish.dateAvailable.length > 2">
          <div class="icon-box">
            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
          </div>
@@ -32,16 +32,10 @@
       </div>
     </div>
     
-    <div class="description-box">
-      <p class="description" [class.expanded]="showFullDescription">
-        {{ dish.description }}
+    <div class="description-box" (click)="openDetail()" style="cursor: pointer;">
+      <p class="description" [style.display]="'block'">
+        {{ dish.description || 'Món ăn cực kì hấp dẫn. Bấm để xem thêm...' }}
       </p>
-      <button 
-        class="read-more-btn" 
-        (click)="showFullDescription = !showFullDescription" 
-        *ngIf="isTruncatable">
-        {{ showFullDescription ? '− Thu gọn' : '+ Xem chi tiết' }}
-      </button>
     </div>
     
     <div class="action-footer">
@@ -57,3 +51,30 @@
     </div>
   </div>
 </div>
+
+<!-- Native HTML5 Dialog Detail -->
+<dialog #dishModal class="detail-dialog" (click)="onDialogClick($event)">
+  <div class="dialog-inner animate-fade-in-up" (click)="$event.stopPropagation()">
+    <button class="close-detail-btn" (click)="closeDetail()">✕</button>
+    
+    <div class="modal-img-container">
+      <div class="modal-image" [style.backgroundImage]="'url(' + dish.imageUrl + ')'"></div>
+      <div class="glass-badge" style="top: 20px; left: 20px;" *ngIf="dish.type">{{ dish.type }}</div>
+    </div>
+    
+    <div class="modal-content">
+      <div class="team-badge" style="margin-bottom: 15px; display: inline-flex;"><span class="sparkle">✦</span> {{ dish.teamName }}</div>
+      <h2 class="modal-title">{{ dish.dishName }}</h2>
+      
+      <div class="modal-price">{{ formattedPrice }} <span style="font-size: 1.2rem; margin-left: 2px;">đ</span></div>
+      
+      <div class="modal-desc-full">
+        {{ dish.description || 'Chưa có thông tin mô tả cho món này. Hãy thưởng thức và chia sẻ cảm nhận nhé!' }}
+      </div>
+      
+      <button class="order-btn modal-order-btn" style="box-shadow: none; justify-content: center; padding: 1rem;" (click)="order.emit(dish); closeDetail()">
+         Thêm vào giỏ hàng
+      </button>
+    </div>
+  </div>
+</dialog>

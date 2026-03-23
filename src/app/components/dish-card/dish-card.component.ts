@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Dish } from '../../models/dish.model';
 import { inject } from '@angular/core';
@@ -17,9 +17,36 @@ export class DishCardComponent {
   @Output() order = new EventEmitter<Dish>();
   showFullDescription = false;
   
-  // Threshold to determine if detail button is needed
-  // Using a rough character count
+  @ViewChild('dishModal') dishModal!: ElementRef<HTMLDialogElement>;
+  
   get isTruncatable(): boolean {
-    return this.dish && this.dish.description.length > 80;
+    return !!(this.dish && this.dish.description && this.dish.description.length > 80);
+  }
+
+  get formattedPrice() {
+    if (!this.dish || !this.dish.price) return '';
+    const numericPrice = Number(this.dish.price.toString().replace(/[^0-9]/g, ''));
+    if (!isNaN(numericPrice) && numericPrice > 0) {
+      return numericPrice.toLocaleString('vi-VN');
+    }
+    return this.dish.price;
+  }
+
+  openDetail() {
+    if (this.dishModal) {
+      this.dishModal.nativeElement.showModal();
+    }
+  }
+
+  closeDetail() {
+    if (this.dishModal) {
+      this.dishModal.nativeElement.close();
+    }
+  }
+
+  onDialogClick(event: MouseEvent) {
+    if (event.target === this.dishModal.nativeElement) {
+      this.closeDetail();
+    }
   }
 }
