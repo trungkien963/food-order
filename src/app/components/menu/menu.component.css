@@ -2,7 +2,6 @@
   display: block;
   background-color: var(--cream-bg);
   min-height: 100vh;
-  margin-top: -2rem; /* The home component has this to go under header */
   padding-top: 2rem; 
 }
 
@@ -20,32 +19,118 @@
 
 .menu-header-section {
   text-align: center;
-  padding: 6rem 5% 4rem;
+  padding: 8rem 5% 6rem 5%;
   position: relative;
-  background-color: var(--yellow-bg);
-  border-bottom: 3px solid var(--brown-text);
-  margin-top: -2rem; /* Extend into the header navigation spacing */
+  background: linear-gradient(135deg, #FFFAAC 0%, #FFDF40 100%);
+  z-index: 2;
+  overflow: hidden; /* Prevent plates from causing horizontal scroll */
+}
+
+.header-content-wrapper {
+  position: relative;
+  z-index: 20;
+}
+
+/* Floating Plates Animation */
+.floater-dish {
+  position: absolute;
+  border-radius: 50%;
+  border: 10px solid #FFFFFF;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+  object-fit: cover;
+  z-index: 5;
+  animation: floatDish 8s infinite ease-in-out;
+}
+
+.plate-left {
+  width: 160px;
+  height: 160px;
+  top: 15%;
+  left: -40px; /* Slight bleed off screen on mobile */
+  transform: rotate(-15deg);
+  animation-delay: 0s;
+}
+
+.plate-right {
+  width: 200px;
+  height: 200px;
+  bottom: 25%;
+  right: -50px;
+  transform: rotate(10deg);
+  animation-delay: -3s;
+}
+
+@media (min-width: 768px) {
+  .plate-left {
+    width: 240px;
+    height: 240px;
+    left: 2%;
+    top: 10%;
+  }
+
+  .plate-right {
+    width: 280px;
+    height: 280px;
+    right: 2%;
+    bottom: 20%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .plate-left { left: 10%; }
+  .plate-right { right: 10%; }
+}
+
+@keyframes floatDish {
+  0% { transform: translateY(0) rotate(-5deg); }
+  50% { transform: translateY(-25px) rotate(5deg); }
+  100% { transform: translateY(0) rotate(-5deg); }
+}
+
+@media (min-width: 900px) {
+  .menu-header-section {
+    padding: 8rem 10% 10rem 10%;
+  }
 }
 
 .torn-paper-bottom {
   position: absolute;
-  bottom: -60px;
+  bottom: -1px;
   left: 0;
   width: 100%;
-  height: 60px;
-  background-image: url("data:image/svg+xml,%3Csvg preserveAspectRatio='none' viewBox='0 0 1440 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,60 C320,120 420,0 720,60 C1020,120 1120,0 1440,60 L1440,120 L0,120 Z' fill='%23FCFDF6'/%3E%3C/svg%3E");
+  height: 140px;
+  background-image: url("data:image/svg+xml,%3Csvg preserveAspectRatio='none' viewBox='0 0 1440 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,60 C400,120 800,0 1440,60 L1440,120 L0,120 Z' fill='%23FCFDF6'/%3E%3C/svg%3E");
   background-size: 100% 100%;
   background-repeat: no-repeat;
   z-index: 10;
 }
 
+@media (min-width: 900px) {
+  .torn-paper-bottom {
+    height: 180px; 
+  }
+}
+
 .quirky-title {
   font-family: 'Playfair Display', serif;
-  color: var(--brown-text);
-  font-size: 4rem;
+  font-size: 2.5rem; /* Mobile */
   line-height: 1.1;
   margin-bottom: 1.5rem;
-  text-shadow: 1px 1px 0px rgba(255,255,255,0.3);
+  font-weight: 800;
+  color: var(--brown-text);
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 768px) {
+  .quirky-title {
+    font-size: 4rem; /* Tablet/Desktop */
+  }
+}
+
+@media (min-width: 1024px) {
+  .quirky-title {
+    font-size: 5rem;
+  }
 }
 
 .highlight-text {
@@ -69,9 +154,9 @@
 }
 
 .section-subtitle {
-  color: var(--brown-text);
+  color: var(--brown-dark);
   font-size: 1.25rem;
-  font-weight: 600;
+  font-weight: 500;
   max-width: 600px;
   margin: 0 auto;
   line-height: 1.6;
@@ -79,17 +164,16 @@
 
 .badge-pill {
   display: inline-block;
-  background-color: var(--accent-olive);
-  color: #FFFFFF;
+  background-color: transparent;
+  color: var(--brown-text);
   padding: 0.6rem 1.4rem;
   border-radius: 50px;
-  font-weight: 800;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-size: 0.9rem;
-  margin-bottom: 2rem;
-  border: none;
-  box-shadow: 0 8px 20px rgba(74, 107, 54, 0.3);
+  font-size: 0.85rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--brown-text);
 }
 
 .menu-content {
@@ -144,8 +228,7 @@
 }
 
 @media (max-width: 768px) {
-  .quirky-title { font-size: 3rem; }
-  .menu-header-section { padding: 4rem 5% 3rem; }
+  .menu-header-section { padding: 9rem 5% 5rem; }
 }
 
 /* 
