@@ -1,0 +1,30 @@
+<header class="navbar-wrapper">
+  <div class="container">
+    <nav class="navbar glass-panel">
+      <a routerLink="/" class="logo">
+        <span class="logo-icon">🔥</span> <span class="text-gradient">CharityBites</span>
+      </a>
+      <div class="nav-links">
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Trang chủ</a>
+        <a routerLink="/menu" routerLinkActive="active">Thực đơn</a>
+        <a routerLink="/cart" routerLinkActive="active" class="cart-link">
+          Giỏ hàng 
+          <span class="cart-badge pulse-badge" *ngIf="cartItemCount > 0">{{ cartItemCount }}</span>
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="main-content">
+  <router-outlet></router-outlet>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <p class="footer-brand"><span class="logo-icon">🔥</span> <span class="text-gradient">CharityBites</span></p>
+      <p>&copy; 2026 Charity Food Order. Lan tỏa yêu thương.</p>
+    </div>
+  </div>
+</footer>

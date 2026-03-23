@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html><body>
+<script>
+fetch('https://docs.google.com/spreadsheets/d/13o5Aa1qbwIf_c5VLyDKKP2laNgJZg6yFLNijumuDgjM/export?format=csv&gid=0')
+  .then(r => r.text())
+  .then(t => console.log("SUCCESS:", t.substring(0,20)))
+  .catch(e => console.error("ERROR:", e));
+</script>
+</body></html>

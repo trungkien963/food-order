@@ -1,0 +1,62 @@
+<div class="container fade-in">
+  <div class="cart-header">
+    <h2 class="section-title">Giỏ hàng quyên góp</h2>
+    <p class="section-subtitle" *ngIf="count > 0">Bạn đang lan tỏa yêu thương với {{count}} phần ăn!</p>
+  </div>
+
+  <div class="success-message glass-panel" *ngIf="orderSuccess">
+    <div class="success-icon">💜</div>
+    <h3>Cảm ơn bạn rất nhiều!</h3>
+    <p>Đơn hàng của bạn đã được ghi nhận. Hệ thống sẽ trích 100% lợi nhuận để đóng góp vào quỹ từ thiện.</p>
+    <a routerLink="/menu" class="btn btn-primary mt-4">Về trang Thực đơn</a>
+  </div>
+
+  <div class="cart-content" *ngIf="!orderSuccess">
+    <div class="empty-state glass-panel" *ngIf="count === 0">
+      <div class="empty-icon">🍽️</div>
+      <h3>Giỏ hàng đang trống</h3>
+      <p>Hãy chọn những món ăn ngon lành từ thực đơn nhé.</p>
+      <a routerLink="/menu" class="btn btn-primary mt-4 pulse-btn">Xem Thực đơn</a>
+    </div>
+
+    <div class="cart-layout" *ngIf="count > 0">
+      <div class="cart-items glass-panel">
+        <div class="cart-item" *ngFor="let item of items">
+          <div class="item-img" [style.backgroundImage]="'url(' + item.dish.imageUrl + ')'"></div>
+          <div class="item-info">
+            <h4>{{ item.dish.dishName }}</h4>
+            <span class="price">{{ item.dish.price }}</span>
+          </div>
+          <div class="item-actions">
+            <input type="number" class="input-field qty-input" [value]="item.quantity" (change)="updateQty(item.dish.id, $event)" min="1">
+            <button class="btn-icon" (click)="remove(item.dish.id)" title="Xóa">🗑️</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="checkout-panel glass-panel">
+        <h3>Tổng kết</h3>
+        <div class="summary-row">
+          <span>Tổng số lượng:</span>
+          <strong>{{ count }} món</strong>
+        </div>
+        <div class="summary-row total">
+          <span>Tổng cộng:</span>
+          <strong class="total-price">{{ formatPrice(total) }}</strong>
+        </div>
+
+        <div class="checkout-form">
+          <div class="input-group">
+            <label class="input-label">Email xác nhận đơn hàng *</label>
+            <input type="email" class="input-field" [class.input-error]="emailError" [(ngModel)]="email" placeholder="Nhập email của bạn...">
+            <span class="error-text" *ngIf="emailError">{{ emailError }}</span>
+          </div>
+          <p class="info-text">Note: Email này sẽ được check tự động trên dữ liệu Google Sheet. Hiện tại đang mock data.</p>
+          <button class="btn btn-primary checkout-btn" (click)="checkout()" [disabled]="isSubmitting">
+            {{ isSubmitting ? 'Đang xử lý...' : 'Xác nhận Đặt món' }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

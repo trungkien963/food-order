@@ -1,0 +1,36 @@
+<div class="dish-card glass-panel" *ngIf="dish">
+  <div class="dish-image" [style.backgroundImage]="'url(' + dish.imageUrl + ')'">
+    <div class="badge-container">
+      <span class="badge" *ngIf="dish.type">{{ dish.type }}</span>
+    </div>
+  </div>
+  
+  <div class="dish-body">
+    <div class="team-badge">
+      <span class="team-icon">👩‍🍳</span> <span class="team-name">{{ dish.teamName }}</span>
+    </div>
+    
+    <h3 class="dish-title">{{ dish.dishName }}</h3>
+    
+    <div class="dish-details">
+      <span class="price text-gradient">{{ dish.price }}</span>
+      <span class="date"><span class="icon">📅</span> {{ dish.dateAvailable }}</span>
+    </div>
+    
+    <div class="description-box">
+      <p class="description" [class.expanded]="showFullDescription">
+        {{ dish.description }}
+      </p>
+      <button 
+        class="btn-link" 
+        (click)="showFullDescription = !showFullDescription" 
+        *ngIf="isTruncatable">
+        {{ showFullDescription ? 'Thu nhỏ ▲' : 'Chi tiết ▼' }}
+      </button>
+    </div>
+    
+    <button class="btn btn-primary order-btn" (click)="order.emit(dish)">
+       Thêm vào Giỏ <span class="order-icon">↗</span>
+    </button>
+  </div>
+</div>

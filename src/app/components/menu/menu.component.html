@@ -1,0 +1,21 @@
+<div class="container fade-in">
+  <div class="menu-header">
+    <h2 class="section-title">Thực đơn quyên góp</h2>
+    <p class="section-subtitle">Hãy chọn những món ăn bạn yêu thích. Mọi đóng góp đều vô cùng trân quý.</p>
+  </div>
+  
+  <div class="menu-grid" *ngIf="dishes$ | async as dishes; else loading">
+    <app-dish-card 
+      *ngFor="let dish of dishes" 
+      [dish]="dish" 
+      (order)="onOrder($event)">
+    </app-dish-card>
+  </div>
+  
+  <ng-template #loading>
+    <div class="loading-state glass-panel">
+      <div class="spinner"></div>
+      <p>Đang tải thực đơn...</p>
+    </div>
+  </ng-template>
+</div>
