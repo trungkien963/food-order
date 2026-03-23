@@ -26,13 +26,29 @@
   .hero {
     flex-direction: row;
     align-items: center;
-    padding: 8rem 10% 4rem 10%;
+    padding: 8rem 4% 4rem 4%; /* More width for content */
+    gap: 4rem; /* Force a thick physical separation wall */
   }
 }
 
 .hero-content {
   flex: 1;
   z-index: 20;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 2.5rem 1.5rem;
+  border-radius: 32px;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 900px) {
+  .hero-content {
+    padding: 3.5rem;
+    margin-bottom: 0;
+  }
 }
 
 .hero-title {
@@ -152,7 +168,7 @@
   align-items: center;
   position: relative;
   margin-top: 4rem;
-  z-index: 15;
+  z-index: 30; /* Overpower the text card to allow 3D overlap */
   min-height: 400px;
   perspective: 1000px;
 }
@@ -165,9 +181,8 @@
 }
 
 .hero-main-img-transparent {
-  width: 120%;
-  /* Safe for mobile */
-  max-width: 700px;
+  width: 100%; /* No spill sideways on smaller screens */
+  max-width: 500px;
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.15)) drop-shadow(0 15px 25px rgba(0, 0, 0, 0.1));
@@ -179,27 +194,35 @@
 
 @media (min-width: 900px) {
   .hero-main-img-transparent {
-    width: 150%;
-    max-width: 1050px;
-    transform: rotate(-3deg) scale(1.15);
+    width: 90%; /* Much smaller, guaranteed fit */
+    max-width: 600px;
+    transform: rotate(-2deg);
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero-main-img-transparent {
+    width: 110%; /* Safer overlap */
+    max-width: 850px;
+    transform: rotate(-3deg) scale(1.05);
   }
 }
 
 .hero-main-img-transparent:hover {
-  transform: rotate(-1deg) translateY(-20px) scale(1.18);
+  transform: rotate(-1deg) translateY(-20px) scale(1.12);
   filter: drop-shadow(0 45px 55px rgba(0, 0, 0, 0.22)) drop-shadow(0 15px 25px rgba(0, 0, 0, 0.15));
 }
 
 .floater {
   position: absolute;
   animation: float 6s infinite ease-in-out;
-  z-index: 10;
+  z-index: 30; /* Increased to hover over the glass card */
 }
 
 .floater-logo {
-  top: 5%;
-  right: 40%;
-  width: 120px;
+  top: 0%;
+  right: 5%;
+  width: 70px;
   filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.1));
   animation-delay: 0s;
   object-fit: contain;
@@ -220,7 +243,7 @@
   border: 1.5px solid rgba(255, 255, 255, 0.7);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08), inset 0 0 20px rgba(255, 255, 255, 0.7);
   animation-delay: 2.5s;
-  z-index: 20;
+  z-index: 35; /* Increased to hover over the glass card */
   overflow: hidden;
 }
 
@@ -249,24 +272,46 @@
 
 @media (min-width: 900px) {
   .floater-logo {
-    right: 55%;
-    width: 180px;
+    right: 5%; /* Stick to the far right edge */
+    width: 80px;
   }
 
   .floater-logo-glass {
     top: 35%;
-    right: 35%;
-    width: 100px;
-    height: 100px;
+    right: 5%;
+    width: 60px;
+    height: 60px;
   }
 
   .floater-tag {
     bottom: 5%;
-    font-size: 1.5rem;
-    padding: 0.8rem 1.6rem;
+    font-size: 1.2rem;
+    padding: 0.6rem 1.2rem;
     transform: rotate(-5deg);
   }
 
+  .floater-tag .hashtag {
+    font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .floater-logo {
+    right: 15%;
+    width: 120px;
+  }
+
+  .floater-logo-glass {
+    right: 15%;
+    width: 80px;
+    height: 80px;
+  }
+
+  .floater-tag {
+    font-size: 1.5rem;
+    padding: 0.8rem 1.6rem;
+  }
+  
   .floater-tag .hashtag {
     font-size: 1.8rem;
   }
