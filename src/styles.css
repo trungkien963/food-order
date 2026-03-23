@@ -17,6 +17,16 @@
   --error: #FF3B30;
   --success: #34C759;
   --warning: #FF9500;
+
+  /* Fresh Food Theme Colors (Wecare 2026) */
+  --yellow-bg: #FFEB5D; /* Bright sunny yellow like reference */
+  --cream-bg: #FCFDF6; /* Clean organic cream background */
+  --brown-text: #2C3523; /* Very dark rich natural olive (almost black) */
+  --brown-bg: #3D2210;
+  --brown-dark: #404B35; 
+  --accent-olive: #8CAC64; /* Vibrant soft green */
+  --solid-shadow: rgba(44, 53, 35, 0.08); /* Soft organic shadow */
+  --solid-shadow-hover: rgba(44, 53, 35, 0.15);
   
   /* Modern Border Radii */
   --radius-sm: 12px;

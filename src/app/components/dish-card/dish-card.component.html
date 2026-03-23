@@ -1,20 +1,24 @@
-<div class="dish-card glass-panel" *ngIf="dish">
+<div class="dish-card" *ngIf="dish">
   <div class="dish-image" [style.backgroundImage]="'url(' + dish.imageUrl + ')'">
-    <div class="badge-container">
-      <span class="badge" *ngIf="dish.type">{{ dish.type }}</span>
+    <div class="badge-container" *ngIf="dish.type">
+      <span class="badge">{{ dish.type }}</span>
     </div>
   </div>
   
   <div class="dish-body">
     <div class="team-badge">
-      <span class="team-icon">👩‍🍳</span> <span class="team-name">{{ dish.teamName }}</span>
+       {{ dish.teamName }} 🌟
     </div>
     
     <h3 class="dish-title">{{ dish.dishName }}</h3>
     
-    <div class="dish-details">
-      <span class="price text-gradient">{{ dish.price }}</span>
-      <span class="date"><span class="icon">📅</span> {{ dish.dateAvailable }}</span>
+    <div class="dish-features">
+      <div class="feature-item">
+         <span class="dot"></span> <span class="price">{{ dish.price }}</span>
+      </div>
+      <div class="feature-item">
+         <span class="dot"></span> <span>{{ dish.dateAvailable }}</span>
+      </div>
     </div>
     
     <div class="description-box">
@@ -25,12 +29,12 @@
         class="btn-link" 
         (click)="showFullDescription = !showFullDescription" 
         *ngIf="isTruncatable">
-        {{ showFullDescription ? 'Thu nhỏ ▲' : 'Chi tiết ▼' }}
+        {{ showFullDescription ? '− Thu gọn' : '+ Chi tiết' }}
       </button>
     </div>
     
-    <button class="btn btn-primary order-btn" (click)="order.emit(dish)">
-       Thêm vào Giỏ <span class="order-icon">↗</span>
+    <button class="order-btn" (click)="order.emit(dish)">
+       Thưởng thức
     </button>
   </div>
 </div>
