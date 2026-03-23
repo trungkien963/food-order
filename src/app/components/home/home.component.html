@@ -1,96 +1,154 @@
 <div class="home-layout animate-fade-in-up stagger-1">
   
-  <!-- Main Hero -->
+  <!-- HERO SECTION -->
   <section class="hero zigzag-wrapper">
     <div class="hero-content">
-      <div class="badge-pill mb-4">✨ Bán Đồ Ăn Gây Quỹ Wecare 2026</div>
+      <div class="badge-pill mb-4">Mantu Wecare 2026</div>
       <h1 class="hero-title">Ăn ngon làm <br> <span class="highlight-text">Tâm Vui</span></h1>
-      <p class="hero-subtitle">Sự kiện gây quỹ từ tay nghề của chính các "đầu bếp" nhân viên công ty. Thưởng thức bữa ngon, nhân đôi sẻ chia!</p>
-      
-      <div class="story-content">
-        <p>
-          Chào bạn, chiến dịch ẩm thực đặc biệt này được nhen nhóm bởi chính những "đầu bếp không chuyên" – những đồng nghiệp nhiệt huyết trong đại gia đình công ty chúng ta. Tạm quên đi những màn hình chằng chịt code, chúng mình đã cùng nhau xắn tay áo, tỉ mẩn chuẩn bị nguyên liệu từ tinh sương để mang đến cho bạn những món ăn bùng nổ hương vị cốt cách hồn Việt!
-        </p>
-        <p>
-          Và điều tuyệt vời nhất ở đây là gì? Toàn bộ số tiền lợi nhuận thu được từ mỗi phần ăn bạn trải nghiệm đều được đóng góp hoàn toàn vào quỹ từ thiện. <strong>Đặc biệt hơn, Quỹ Wecare công ty sẽ tài trợ thêm số tiền tương ứng dựa trên tổng doanh thu/quyên góp của chương trình!</strong> Hãy cùng thưởng thức sức mạnh của ẩm thực, để mỗi phần ăn lấp đầy chiếc bụng đói và sưởi ấm hàng ngàn số phận khó khăn ngoài kia.
-        </p>
-      </div>
+      <p class="hero-subtitle">
+        Sự kiện gây quỹ nội bộ Mantu thường niên nay đã trở lại với quy mô bùng nổ hơn bao giờ hết! Những chiếc Bánh Mì giòn rụm được chăm chút thủ công từ chính tay nghề của các "đầu bếp" đồng nghiệp, mang đậm hương vị đường phố chân thực nhất. 
+        <br><br>
+        Đặc biệt hơn, <strong>100% doanh thu</strong> sẽ được chuyển thẳng vào quỹ từ thiện cộng đồng và được công ty <strong>nhân đôi giá trị đóng góp</strong>! Thưởng thức bữa ngon, lan tỏa yêu thương.
+      </p>
       
       <div class="hero-actions mt-6">
-        <a routerLink="/menu" class="fresh-btn">
-          Thưởng thức & Gây quỹ
-        </a>
+        <a routerLink="/menu" class="fresh-btn">Ủng hộ ngay</a>
+        <a href="#story" class="outline-btn">Khám phá</a>
       </div>
     </div>
 
+    <!-- Transparent image overlapping wave -->
     <div class="hero-img-container">
-       <img src="assets/images/combo_food.jpg" alt="Món ăn Việt Nam" class="hero-main-img" />
+       <img src="assets/images/hero_banh_mi.png" alt="Hero Bánh Mì" class="hero-main-img-transparent" />
        
-       <!-- Animated White Ring (Chấm trắng) -->
-       <div class="animated-ring"></div>
+       <!-- Floaters -->
+       <img src="assets/images/Mantu_Logo.png" alt="Mantu Logo" class="floater floater-logo" />
        
-       <!-- Animated Mantu Logo (Transparent) -->
-       <div class="animated-mantu-logo">
-          <img src="assets/images/Mantu_Logo.png" alt="Mantu Logo" />
-       </div>
-
-       <!-- Animated Logo Circle (Thay cho quả dứa) -->
-       <div class="animated-logo-circle">
-          <span class="logo-emoji">🔥</span>
+       <!-- Glassmorphic Logo Floater -->
+       <div class="floater floater-logo-glass">
+         <img src="assets/images/Mantu_Logo.png" alt="Mantu Glass Logo" />
        </div>
        
-       <!-- WecareTogether Tag -->
-       <div class="wecare-tag">#WecareTogether</div>
+       <div class="floater floater-tag">
+          <span class="hashtag">#</span>WecareTogether
+       </div>
     </div>
     
-    <!-- Torn Paper Edge SVG -->
-    <div class="torn-paper-bottom"></div>
+    <!-- Smooth Wave Bottom -->
+    <div class="wave-bottom"></div>
   </section>
 
-  <!-- Cream Section -->
-  <section class="cream-section">
-    <div class="stat-container">
-       <div class="fresh-stat">
-          <h4>Tổng Đơn Hàng</h4>
-          <h3>{{ displayedOrders | number }} <span>phần</span></h3>
-       </div>
-       <div class="fresh-stat">
-          <h4>Quỹ Quyên Góp</h4>
-          <h3>{{ displayedDonation | number }} <span>VND</span></h3>
-       </div>
+  <!-- STORY SECTION (2x2 Pastel Cards) -->
+  <section id="story" class="story-section">
+    <div class="section-header text-center">
+      <h2 class="quirky-title text-center">Câu Chuyện Wecare 2026</h2>
+      <p class="section-subtitle text-center mx-auto">Chút chuyện nhỏ phía sau những bữa ăn ngon đậm chất hồn Việt.</p>
     </div>
 
-    <div class="food-grid">
-       <div class="food-item">
-          <div class="food-item-img torn-border">
-             <img src="https://images.unsplash.com/photo-1625937759403-115f5a2a24aa?q=80&w=2070&auto=format&fit=crop" alt="Bánh mì chảo"/>
-          </div>
-          <div class="food-item-text">
-             <h3 class="quirky-title">Giòn rụm <br> Vị đường phố</h3>
-             <p>Ổ bánh mì nóng hổi, giòn tan bên ngoài, hòa quyện với patê béo ngậy và chả lụa đậm đà bên trong. Một âm thanh nhai rộp rộp mang đậm nét nhộn nhịp của buổi sáng Việt Nam.</p>
-          </div>
-       </div>
+    <div class="pastel-grid">
+      <!-- Card 1: Pink -->
+      <div class="pastel-card card-pink">
+        <div class="card-content">
+          <h3 class="card-title">Đầu bếp <br> tay ngang</h3>
+          <ul class="card-bullets">
+            <li>Tự tay chuẩn bị</li>
+            <li>Đậm đà hương vị</li>
+            <li>Tràn đầy nhiệt huyết</li>
+          </ul>
+          <button class="small-pill-btn">Khám phá ↗</button>
+        </div>
+        <img src="assets/images/cat_com_tam_1774219573802.png" alt="Chef" class="card-img-transparent" />
+      </div>
 
-       <div class="food-item reverse">
-          <div class="food-item-text">
-             <h3 class="quirky-title">Tươi mát <br> Cuộn mùa hè</h3>
-             <p>Lớp bánh tráng dẻo thơm ôm trọn những con tôm hường tươi rói, thịt luộc thái mỏng cùng vô số loại rau thơm xanh mát. Chấm cùng tương đậu phộng mặn ngọt chua cay, thức tỉnh mọi giác quan.</p>
-          </div>
-          <div class="food-item-img torn-border">
-             <img src="https://images.unsplash.com/photo-1536521642388-441263f88a61?q=80&w=1000&auto=format&fit=crop" alt="Gỏi cuốn Việt Nam"/>
-          </div>
-       </div>
+      <!-- Card 2: Green -->
+      <div class="pastel-card card-green">
+        <div class="card-content">
+          <h3 class="card-title">Nguyên liệu <br> tinh sương</h3>
+          <ul class="card-bullets">
+            <li>Tươi ngon nhất</li>
+            <li>Đảm bảo vệ sinh</li>
+            <li>Chuẩn bị cực sớm</li>
+          </ul>
+          <button class="small-pill-btn">Khám phá ↗</button>
+        </div>
+        <img src="assets/images/cat_do_cuon_1774219587566.png" alt="Ingredients" class="card-img-transparent" />
+      </div>
+
+      <!-- Card 3: Cyan/Blue -->
+      <div class="pastel-card card-cyan">
+        <div class="card-content">
+          <h3 class="card-title">100% Phục vụ <br> Gây quỹ</h3>
+          <ul class="card-bullets">
+            <li>Gửi gắm trọn vẹn</li>
+            <li>Minh bạch rõ ràng</li>
+            <li>Trực tiếp trao tay</li>
+          </ul>
+          <button class="small-pill-btn">Khám phá ↗</button>
+        </div>
+        <img src="assets/images/cat_banh_trang_tron_1774219636631.png" alt="Fund" class="card-img-transparent" />
+      </div>
+
+      <!-- Card 4: Yellow -->
+      <div class="pastel-card card-yellow">
+        <div class="card-content">
+          <h3 class="card-title">Công ty <br> nhân đôi</h3>
+          <p class="card-text">
+            Chương trình Wecare công ty sẽ tài trợ thêm số tiền tương ứng dựa trên tổng doanh thu!
+          </p>
+          <button class="small-pill-btn">Khám phá ↗</button>
+        </div>
+        <img src="assets/images/cat_tra_sua_1774219599922.png" alt="Double Impact" class="card-img-transparent" />
+      </div>
     </div>
   </section>
 
-  <!-- Brown final section -->
-  <section class="brown-section">
-    <div class="torn-paper-top"></div>
-    <div class="brown-content text-center">
-       <h2 class="quirky-title text-light">Cùng chung tay <br> Tạo niềm vui</h2>
-       <p class="text-light" style="max-width: 600px; margin: 0 auto;">Cùng chúng tôi tạo nên những điều tuyệt vời nhất qua từng bữa ăn. Sự ủng hộ của bạn là động lực to lớn cho những dự án cộng đồng của chúng tôi.</p>
-       <a routerLink="/menu" class="fresh-btn outline-light mt-6" style="margin-top: 2rem;">Đặt Món Ngay</a>
+  <!-- STATS / IMPACT SECTION (Vertical white cards on light wavy bg) -->
+  <section class="impact-section">
+    <div class="wave-top-impact"></div>
+    <div class="impact-content">
+      <div class="section-header text-center">
+        <div class="badge-pill sm-pill mx-auto mb-2">Hey Wecare!</div>
+        <h2 class="quirky-title text-center">Niềm vui <span>Trao gửi</span></h2>
+        <p class="section-subtitle text-center mx-auto mb-5">Thành quả đến từ sự chung tay của tất cả chúng ta.</p>
+      </div>
+
+      <div class="stats-grid">
+        <!-- Stat Card 1 -->
+        <div class="stat-card">
+          <div class="stat-img-wrapper">
+             <img src="assets/images/cat_do_ran_1774219649545.png" alt="Orders" class="stat-img-transparent" />
+          </div>
+          <div class="stat-info">
+            <h4 class="stat-label">Tổng Đơn Hàng</h4>
+            <div class="stat-value">{{ displayedOrders | number }}<span class="unit">phần</span></div>
+            <p class="stat-desc">Đã gửi trao</p>
+          </div>
+        </div>
+
+        <!-- Stat Card 2 -->
+        <div class="stat-card">
+          <div class="stat-img-wrapper">
+             <img src="assets/images/cat_nuoc_giai_khat_1774219665120.png" alt="Donation" class="stat-img-transparent" />
+          </div>
+          <div class="stat-info">
+            <h4 class="stat-label">Quỹ Quyên Góp</h4>
+            <div class="stat-value">{{ displayedDonation | number }}<span class="unit">VND</span></div>
+            <p class="stat-desc">100% Gây Quỹ</p>
+          </div>
+        </div>
+
+        <!-- Stat Card 3 -->
+        <div class="stat-card">
+          <div class="stat-img-wrapper">
+             <img src="assets/images/stunning_pho.png" alt="Smiles" class="stat-img-transparent" />
+          </div>
+          <div class="stat-info">
+            <h4 class="stat-label">Nụ Cười Nhận Lại</h4>
+            <div class="stat-value">Vô giá<span class="unit">✨</span></div>
+            <p class="stat-desc">Lan toả yêu thương</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
-
 </div>
