@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { CartService } from '../../services/cart.service';
 import { DataService } from '../../services/data.service';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-cart',
@@ -17,6 +18,7 @@ export class CartComponent {
   cartService = inject(CartService);
   dataService = inject(DataService);
   decimalPipe = inject(DecimalPipe);
+  lang = inject(LanguageService);
   
   email: string = '';
   emailError: string = '';
@@ -47,7 +49,7 @@ export class CartComponent {
     this.emailError = '';
     
     if (!this.email || this.email.trim() === '') {
-      this.emailError = 'Vui lòng nhập email xác nhận.';
+      this.emailError = this.lang.currentLang() === 'vi' ? 'Vui lòng nhập email xác nhận.' : 'Please enter an email.';
       return;
     }
     
@@ -57,7 +59,7 @@ export class CartComponent {
       next: (isValid) => {
         this.isSubmitting = false;
         if (!isValid) {
-          this.emailError = 'Email không hợp lệ hoặc không có trong danh sách đăng ký. Vui lòng nhập lại.';
+          this.emailError = this.lang.currentLang() === 'vi' ? 'Email không hợp lệ hoặc không có trong danh sách đăng ký.' : 'Invalid email or not registered.';
         } else {
           this.orderSuccess = true;
           this.cartService.clearCart();
@@ -65,7 +67,7 @@ export class CartComponent {
       },
       error: () => {
         this.isSubmitting = false;
-        this.emailError = 'Có lỗi xảy ra khi xác thực email.';
+        this.emailError = this.lang.currentLang() === 'vi' ? 'Có lỗi xảy ra khi xác thực email.' : 'An error occurred during email validation.';
       }
     });
   }

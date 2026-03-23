@@ -1,6 +1,6 @@
 <div class="container fade-in">
   <div class="cart-header">
-    <h2 class="section-title">Giỏ hàng quyên góp</h2>
+    <h2 class="section-title">{{ lang.t.CART.CART_TITLE }} quyên góp</h2>
     <p class="section-subtitle" *ngIf="count > 0">Bạn đang lan tỏa yêu thương với {{count}} phần ăn!</p>
   </div>
 
@@ -14,7 +14,7 @@
   <div class="cart-content" *ngIf="!orderSuccess">
     <div class="empty-state glass-panel" *ngIf="count === 0">
       <div class="empty-icon">🍽️</div>
-      <h3>Giỏ hàng đang trống</h3>
+      <h3>{{ lang.t.CART.CART_TITLE }} đang trống</h3>
       <p>Hãy chọn những món ăn ngon lành từ thực đơn nhé.</p>
       <a routerLink="/menu" class="btn btn-primary mt-4 pulse-btn">Xem Thực đơn</a>
     </div>
@@ -53,7 +53,7 @@
           </div>
           <p class="info-text">Note: Email này sẽ được check tự động trên dữ liệu Google Sheet. Hiện tại đang mock data.</p>
           <button class="btn btn-primary checkout-btn" (click)="checkout()" [disabled]="isSubmitting">
-            {{ isSubmitting ? 'Đang xử lý...' : 'Xác nhận Đặt món' }}
+            {{ isSubmitting ? '{{ lang.t.CART.BTN_LOADING }}' : 'Xác nhận Đặt món' }}
           </button>
         </div>
       </div>

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DishCardComponent } from '../dish-card/dish-card.component';
 import { DataService } from '../../services/data.service';
 import { CartService } from '../../services/cart.service';
+import { LanguageService } from '../../services/language.service';
 import { Dish } from '../../models/dish.model';
 import { Observable } from 'rxjs';
 
@@ -16,6 +17,7 @@ import { Observable } from 'rxjs';
 export class MenuComponent implements OnInit {
   dataService = inject(DataService);
   cartService = inject(CartService);
+  lang = inject(LanguageService);
   
   dishes$!: Observable<Dish[]>;
 

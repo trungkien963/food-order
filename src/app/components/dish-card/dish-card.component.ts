@@ -1,6 +1,8 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Dish } from '../../models/dish.model';
+import { inject } from '@angular/core';
+import { LanguageService as LangSvc } from '../../services/language.service';
 
 @Component({
   selector: 'app-dish-card',
@@ -10,6 +12,7 @@ import { Dish } from '../../models/dish.model';
   styleUrls: ['./dish-card.component.css']
 })
 export class DishCardComponent {
+  lang = inject(LangSvc);
   @Input({ required: true }) dish!: Dish;
   @Output() order = new EventEmitter<Dish>();
   showFullDescription = false;

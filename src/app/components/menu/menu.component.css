@@ -2,7 +2,6 @@
   display: block;
   background-color: var(--cream-bg);
   min-height: 100vh;
-  padding-top: 2rem; 
 }
 
 .menu-layout {
@@ -17,103 +16,49 @@
   padding-bottom: 4rem;
 }
 
-.menu-header-section {
-  text-align: center;
-  padding: 8rem 5% 6rem 5%;
-  position: relative;
+/* ==== HERO SECTION ==== */
+.hero {
   background: linear-gradient(135deg, #FFFAAC 0%, #FFDF40 100%);
-  z-index: 2;
-  overflow: hidden; /* Prevent plates from causing horizontal scroll */
-}
-
-.header-content-wrapper {
+  min-height: 85vh;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 11rem 5% 2rem 5%;
+  z-index: 2;
+}
+
+@media (min-width: 900px) {
+  .hero {
+    flex-direction: row;
+    align-items: center;
+    padding: 8rem 4% 4rem 4%;
+    gap: 4rem;
+  }
+}
+
+.hero-content {
+  flex: 1;
   z-index: 20;
-}
-
-/* Floating Plates Animation */
-.floater-dish {
-  position: absolute;
-  border-radius: 50%;
-  border: 10px solid #FFFFFF;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-  object-fit: cover;
-  z-index: 5;
-  animation: floatDish 8s infinite ease-in-out;
-}
-
-.plate-left {
-  width: 160px;
-  height: 160px;
-  top: 15%;
-  left: -40px; /* Slight bleed off screen on mobile */
-  transform: rotate(-15deg);
-  animation-delay: 0s;
-}
-
-.plate-right {
-  width: 200px;
-  height: 200px;
-  bottom: 25%;
-  right: -50px;
-  transform: rotate(10deg);
-  animation-delay: -3s;
-}
-
-@media (min-width: 768px) {
-  .plate-left {
-    width: 240px;
-    height: 240px;
-    left: 2%;
-    top: 10%;
-  }
-
-  .plate-right {
-    width: 280px;
-    height: 280px;
-    right: 2%;
-    bottom: 20%;
-  }
-}
-
-@media (min-width: 1200px) {
-  .plate-left { left: 10%; }
-  .plate-right { right: 10%; }
-}
-
-@keyframes floatDish {
-  0% { transform: translateY(0) rotate(-5deg); }
-  50% { transform: translateY(-25px) rotate(5deg); }
-  100% { transform: translateY(0) rotate(-5deg); }
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 2.5rem 1.5rem;
+  border-radius: 32px;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
 }
 
 @media (min-width: 900px) {
-  .menu-header-section {
-    padding: 8rem 10% 10rem 10%;
+  .hero-content {
+    padding: 3.5rem;
+    margin-bottom: 0;
   }
 }
 
-.torn-paper-bottom {
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  width: 100%;
-  height: 140px;
-  background-image: url("data:image/svg+xml,%3Csvg preserveAspectRatio='none' viewBox='0 0 1440 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,60 C400,120 800,0 1440,60 L1440,120 L0,120 Z' fill='%23FCFDF6'/%3E%3C/svg%3E");
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  z-index: 10;
-}
-
-@media (min-width: 900px) {
-  .torn-paper-bottom {
-    height: 180px; 
-  }
-}
-
-.quirky-title {
+.hero-title {
   font-family: 'Playfair Display', serif;
-  font-size: 2.5rem; /* Mobile */
+  font-size: 2.5rem;
   line-height: 1.1;
   margin-bottom: 1.5rem;
   font-weight: 800;
@@ -122,44 +67,30 @@
 }
 
 @media (min-width: 768px) {
-  .quirky-title {
-    font-size: 4rem; /* Tablet/Desktop */
+  .hero-title {
+    font-size: 3.5rem;
   }
 }
 
-@media (min-width: 1024px) {
-  .quirky-title {
+@media (min-width: 900px) {
+  .hero-title {
     font-size: 5rem;
   }
 }
 
 .highlight-text {
+  font-family: 'Playfair Display', serif;
   font-style: italic;
-  position: relative;
-  display: inline-block;
-  padding-right: 15px;
+  font-weight: 800;
 }
 
-.highlight-text::after {
-  content: '';
-  position: absolute;
-  bottom: 0.2em;
-  left: 0;
-  width: 100%;
-  height: 0.35em;
-  background-color: rgba(255, 255, 255, 0.5);
-  z-index: -1;
-  transform: rotate(-2deg);
-  border-radius: 4px;
-}
-
-.section-subtitle {
-  color: var(--brown-dark);
+.hero-subtitle {
   font-size: 1.25rem;
   font-weight: 500;
-  max-width: 600px;
-  margin: 0 auto;
   line-height: 1.6;
+  margin-bottom: 2rem;
+  max-width: 90%;
+  color: var(--brown-dark);
 }
 
 .badge-pill {
@@ -174,6 +105,105 @@
   font-size: 0.85rem;
   margin-bottom: 1.5rem;
   border: 1px solid var(--brown-text);
+}
+
+.hero-img-container {
+  flex: 1.2;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+  margin-top: 4rem;
+  z-index: 30;
+  min-height: 400px;
+  perspective: 1000px;
+}
+
+@media (min-width: 900px) {
+  .hero-img-container {
+    margin-top: 0;
+    transform: translateY(40px);
+  }
+}
+
+.hero-main-img-transparent {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.15)) drop-shadow(0 15px 25px rgba(0, 0, 0, 0.1));
+  z-index: 2;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform-origin: center center;
+  transform: rotate(-1deg);
+}
+
+@media (min-width: 900px) {
+  .hero-main-img-transparent {
+    width: 90%;
+    max-width: 600px;
+    transform: rotate(-2deg);
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero-main-img-transparent {
+    width: 110%;
+    max-width: 850px;
+    transform: rotate(-3deg) scale(1.05);
+  }
+}
+
+.hero-main-img-transparent:hover {
+  transform: rotate(-1deg) translateY(-20px) scale(1.12);
+  filter: drop-shadow(0 45px 55px rgba(0, 0, 0, 0.22)) drop-shadow(0 15px 25px rgba(0, 0, 0, 0.15));
+}
+
+.floater {
+  position: absolute;
+  animation: float 6s infinite ease-in-out;
+  z-index: 30;
+}
+
+.floater-pho {
+  top: -5%;
+  right: 60%;
+  width: 100px;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.1));
+  animation-delay: 0s;
+  object-fit: cover;
+}
+
+@media (min-width: 900px) {
+  .floater-pho {
+    right: 75%;
+    width: 150px;
+  }
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-18px); }
+  100% { transform: translateY(0); }
+}
+
+.wave-bottom {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 140px;
+  background-image: url("data:image/svg+xml,%3Csvg preserveAspectRatio='none' viewBox='0 0 1440 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,60 C400,120 800,0 1440,60 L1440,120 L0,120 Z' fill='%23FCFDF6'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+  z-index: 10;
+}
+
+@media (min-width: 900px) {
+  .wave-bottom {
+    height: 180px;
+  }
 }
 
 .menu-content {
@@ -227,9 +257,7 @@
   100% { transform: rotate(360deg); }
 }
 
-@media (max-width: 768px) {
-  .menu-header-section { padding: 9rem 5% 5rem; }
-}
+
 
 /* 
  * Apply alternating pastel colors to dish cards

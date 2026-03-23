@@ -3,17 +3,17 @@
   <!-- HERO SECTION -->
   <section class="hero zigzag-wrapper">
     <div class="hero-content">
-      <div class="badge-pill mb-4">Mantu Wecare 2026</div>
-      <h1 class="hero-title">Ăn ngon làm <br> <span class="highlight-text">Tâm Vui</span></h1>
+      <div class="badge-pill mb-4">{{ lang.t.HOME.BADGE }}</div>
+      <h1 class="hero-title">{{ lang.t.HOME.TITLE_1 }} <br> <span class="highlight-text">{{ lang.t.HOME.TITLE_2 }}</span></h1>
       <p class="hero-subtitle">
-        Sự kiện gây quỹ nội bộ Mantu thường niên nay đã trở lại với quy mô bùng nổ hơn bao giờ hết! Những chiếc Bánh Mì giòn rụm được chăm chút thủ công từ chính tay nghề của các "đầu bếp" đồng nghiệp, mang đậm hương vị đường phố chân thực nhất. 
+        {{ lang.t.HOME.DESC_1 }} 
         <br><br>
-        Đặc biệt hơn, <strong>100% doanh thu</strong> sẽ được chuyển thẳng vào quỹ từ thiện cộng đồng và được công ty <strong>nhân đôi giá trị đóng góp</strong>! Thưởng thức bữa ngon, lan tỏa yêu thương.
+        {{ lang.t.HOME.DESC_2 }}
       </p>
       
       <div class="hero-actions mt-6">
-        <a routerLink="/menu" class="fresh-btn">Ủng hộ ngay</a>
-        <a href="#story" class="outline-btn">Khám phá</a>
+        <a routerLink="/menu" class="fresh-btn">{{ lang.t.HOME.BTN_SUPPORT }}</a>
+        <a href="#story" class="outline-btn">{{ lang.t.HOME.BTN_EXPLORE }}</a>
       </div>
     </div>
 
@@ -41,21 +41,21 @@
   <!-- STORY SECTION (2x2 Pastel Cards) -->
   <section id="story" class="story-section">
     <div class="section-header text-center">
-      <h2 class="quirky-title text-center">Câu Chuyện Wecare 2026</h2>
-      <p class="section-subtitle text-center mx-auto">Chút chuyện nhỏ phía sau những bữa ăn ngon đậm chất hồn Việt.</p>
+      <h2 class="quirky-title text-center">{{ lang.t.HOME.STORY_TITLE }}</h2>
+      <p class="section-subtitle text-center mx-auto">{{ lang.t.HOME.STORY_SUBTITLE }}</p>
     </div>
 
     <div class="pastel-grid">
       <!-- Card 1: Pink -->
       <div class="pastel-card card-pink">
         <div class="card-content">
-          <h3 class="card-title">Đầu bếp <br> tay ngang</h3>
+          <h3 class="card-title">{{ lang.t.HOME.CARD_1_TITLE }}</h3>
           <ul class="card-bullets">
-            <li>Tự tay chuẩn bị</li>
-            <li>Đậm đà hương vị</li>
-            <li>Tràn đầy nhiệt huyết</li>
+            <li>{{ lang.t.HOME.CARD_1_1 }}</li>
+            <li>{{ lang.t.HOME.CARD_1_2 }}</li>
+            <li>{{ lang.t.HOME.CARD_1_3 }}</li>
           </ul>
-          <button class="small-pill-btn">Khám phá ↗</button>
+          <button class="small-pill-btn">{{ lang.t.HOME.BTN_ARROW }}</button>
         </div>
         <img src="assets/images/cat_com_tam_1774219573802.png" alt="Chef" class="card-img-transparent" />
       </div>
@@ -63,13 +63,13 @@
       <!-- Card 2: Green -->
       <div class="pastel-card card-green">
         <div class="card-content">
-          <h3 class="card-title">Nguyên liệu <br> tinh sương</h3>
+          <h3 class="card-title">{{ lang.t.HOME.CARD_2_TITLE }}</h3>
           <ul class="card-bullets">
-            <li>Tươi ngon nhất</li>
-            <li>Đảm bảo vệ sinh</li>
-            <li>Chuẩn bị cực sớm</li>
+            <li>{{ lang.t.HOME.CARD_2_1 }}</li>
+            <li>{{ lang.t.HOME.CARD_2_2 }}</li>
+            <li>{{ lang.t.HOME.CARD_2_3 }}</li>
           </ul>
-          <button class="small-pill-btn">Khám phá ↗</button>
+          <button class="small-pill-btn">{{ lang.t.HOME.BTN_ARROW }}</button>
         </div>
         <img src="assets/images/cat_do_cuon_1774219587566.png" alt="Ingredients" class="card-img-transparent" />
       </div>
@@ -77,13 +77,13 @@
       <!-- Card 3: Cyan/Blue -->
       <div class="pastel-card card-cyan">
         <div class="card-content">
-          <h3 class="card-title">100% Phục vụ <br> Gây quỹ</h3>
+          <h3 class="card-title">{{ lang.t.HOME.CARD_3_TITLE }}</h3>
           <ul class="card-bullets">
-            <li>Gửi gắm trọn vẹn</li>
-            <li>Minh bạch rõ ràng</li>
-            <li>Trực tiếp trao tay</li>
+            <li>{{ lang.t.HOME.CARD_3_1 }}</li>
+            <li>{{ lang.t.HOME.CARD_3_2 }}</li>
+            <li>{{ lang.t.HOME.CARD_3_3 }}</li>
           </ul>
-          <button class="small-pill-btn">Khám phá ↗</button>
+          <button class="small-pill-btn">{{ lang.t.HOME.BTN_ARROW }}</button>
         </div>
         <img src="assets/images/cat_banh_trang_tron_1774219636631.png" alt="Fund" class="card-img-transparent" />
       </div>
@@ -91,11 +91,11 @@
       <!-- Card 4: Yellow -->
       <div class="pastel-card card-yellow">
         <div class="card-content">
-          <h3 class="card-title">Công ty <br> nhân đôi</h3>
+          <h3 class="card-title">{{ lang.t.HOME.CARD_4_TITLE }}</h3>
           <p class="card-text">
-            Chương trình Wecare công ty sẽ tài trợ thêm số tiền tương ứng dựa trên tổng doanh thu!
+            {{ lang.t.HOME.CARD_4_DESC }}
           </p>
-          <button class="small-pill-btn">Khám phá ↗</button>
+          <button class="small-pill-btn">{{ lang.t.HOME.BTN_ARROW }}</button>
         </div>
         <img src="assets/images/cat_tra_sua_1774219599922.png" alt="Double Impact" class="card-img-transparent" />
       </div>
@@ -107,9 +107,9 @@
     <div class="wave-top-impact"></div>
     <div class="impact-content">
       <div class="section-header text-center">
-        <div class="badge-pill sm-pill mx-auto mb-2">Hey Wecare!</div>
-        <h2 class="quirky-title text-center">Niềm vui <span>Trao gửi</span></h2>
-        <p class="section-subtitle text-center mx-auto mb-5">Thành quả đến từ sự chung tay của tất cả chúng ta.</p>
+        <div class="badge-pill sm-pill mx-auto mb-2">{{ lang.t.HOME.IMPACT_BADGE }}</div>
+        <h2 class="quirky-title text-center">{{ lang.t.HOME.IMPACT_TITLE_1 }} <span>{{ lang.t.HOME.IMPACT_TITLE_2 }}</span></h2>
+        <p class="section-subtitle text-center mx-auto mb-5">{{ lang.t.HOME.IMPACT_SUBTITLE }}</p>
       </div>
 
       <div class="stats-grid">
@@ -119,9 +119,9 @@
              <img src="assets/images/cat_do_ran_1774219649545.png" alt="Orders" class="stat-img-transparent" />
           </div>
           <div class="stat-info">
-            <h4 class="stat-label">Tổng Đơn Hàng</h4>
-            <div class="stat-value">{{ displayedOrders | number }}<span class="unit">phần</span></div>
-            <p class="stat-desc">Đã gửi trao</p>
+            <h4 class="stat-label">{{ lang.t.HOME.STAT_1_L }}</h4>
+            <div class="stat-value">{{ displayedOrders | number }}<span class="unit">{{ lang.t.HOME.STAT_1_U }}</span></div>
+            <p class="stat-desc">{{ lang.t.HOME.STAT_1_D }}</p>
           </div>
         </div>
 
@@ -131,9 +131,9 @@
              <img src="assets/images/cat_nuoc_giai_khat_1774219665120.png" alt="Donation" class="stat-img-transparent" />
           </div>
           <div class="stat-info">
-            <h4 class="stat-label">Quỹ Quyên Góp</h4>
-            <div class="stat-value">{{ displayedDonation | number }}<span class="unit">VND</span></div>
-            <p class="stat-desc">100% Gây Quỹ</p>
+            <h4 class="stat-label">{{ lang.t.HOME.STAT_2_L }}</h4>
+            <div class="stat-value">{{ displayedDonation | number }}<span class="unit">{{ lang.t.HOME.STAT_2_U }}</span></div>
+            <p class="stat-desc">{{ lang.t.HOME.STAT_2_D }}</p>
           </div>
         </div>
 
@@ -143,9 +143,9 @@
              <img src="assets/images/stunning_pho.png" alt="Smiles" class="stat-img-transparent" />
           </div>
           <div class="stat-info">
-            <h4 class="stat-label">Nụ Cười Nhận Lại</h4>
-            <div class="stat-value">Vô giá<span class="unit">✨</span></div>
-            <p class="stat-desc">Lan toả yêu thương</p>
+            <h4 class="stat-label">{{ lang.t.HOME.STAT_3_L }}</h4>
+            <div class="stat-value">{{ lang.t.HOME.STAT_3_V }}<span class="unit">{{ lang.t.HOME.STAT_3_U }}</span></div>
+            <p class="stat-desc">{{ lang.t.HOME.STAT_3_D }}</p>
           </div>
         </div>
       </div>

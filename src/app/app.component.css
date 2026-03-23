@@ -162,3 +162,16 @@
     padding: 0.4rem 0.8rem !important;
   }
 }
+
+.lang-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.lang-btn:hover {
+  background: var(--surface);
+}

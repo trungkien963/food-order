@@ -1,17 +1,24 @@
 <div class="menu-layout animate-fade-in-up stagger-1">
-  <section class="menu-header-section">
-    <!-- Floating Food Plates -->
-    <img src="assets/images/stunning_pho.png" alt="Phở" class="floater-dish plate-left" />
-    <img src="assets/images/cat_com_tam_1774219573802.png" alt="Cơm Tấm" class="floater-dish plate-right" />
-    
-    <div class="header-content-wrapper">
-      <div class="badge-pill">🤤 Bụng Đói Khách Kêu</div>
-      <h2 class="quirky-title">Thực đơn <br> <span class="highlight-text">quyên góp</span></h2>
-      <p class="section-subtitle">Hãy chọn những món ăn bạn yêu thích. Mọi đóng góp đều vô cùng trân quý và sẽ được gửi vào Quỹ Wecare.</p>
+  <!-- HERO SECTION -->
+  <section class="hero zigzag-wrapper">
+    <div class="hero-content">
+      <div class="badge-pill mb-4">{{ lang.t.MENU.BADGE }}</div>
+      <h1 class="hero-title">{{ lang.t.MENU.TITLE_1 }} <br> <span class="highlight-text">{{ lang.t.MENU.TITLE_2 }}</span></h1>
+      <p class="hero-subtitle">
+        {{ lang.t.MENU.SUBTITLE }}
+      </p>
+    </div>
+
+    <!-- Transparent image overlapping wave -->
+    <div class="hero-img-container">
+       <img src="assets/images/com_tam.png" alt="Cơm Tấm" class="hero-main-img-transparent" />
+       
+       <!-- Floaters -->
+       <img src="assets/images/stunning_pho.png" alt="Phở" class="floater floater-pho" />
     </div>
     
-    <!-- Torn paper edge transition -->
-    <div class="torn-paper-bottom"></div>
+    <!-- Smooth Wave Bottom -->
+    <div class="wave-bottom"></div>
   </section>
   
   <section class="menu-content">
@@ -26,7 +33,7 @@
     <ng-template #loading>
       <div class="loading-state">
         <div class="spinner"></div>
-        <p>Đang chuẩn bị thức ăn...</p>
+        <p>{{ lang.t.MENU.LOADING }}</p>
       </div>
     </ng-template>
   </section>

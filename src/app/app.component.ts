@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { CartService } from './services/cart.service';
+import { LanguageService } from './services/language.service';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,7 @@ import { CartService } from './services/cart.service';
 export class AppComponent {
   title = 'food-order';
   cartService = inject(CartService);
+  lang = inject(LanguageService);
 
   get cartItemCount() {
     return this.cartService.getTotalItems();

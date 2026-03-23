@@ -220,9 +220,9 @@
 }
 
 .floater-logo {
-  top: 0%;
-  right: 5%;
-  width: 70px;
+  top: -5%;
+  right: 60%; /* Push it to the left side of the image container on mobile */
+  width: 60px;
   filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.1));
   animation-delay: 0s;
   object-fit: contain;
@@ -272,15 +272,15 @@
 
 @media (min-width: 900px) {
   .floater-logo {
-    right: 5%; /* Stick to the far right edge */
-    width: 80px;
+    right: 75%; /* Push left towards the text card */
+    width: 85px;
   }
 
   .floater-logo-glass {
-    top: 35%;
-    right: 5%;
-    width: 60px;
-    height: 60px;
+    top: 25%; /* Move it up slightly away from the sandwich */
+    right: 5%; /* Keep right */
+    width: 70px;
+    height: 70px;
   }
 
   .floater-tag {
@@ -297,14 +297,14 @@
 
 @media (min-width: 1200px) {
   .floater-logo {
-    right: 15%;
-    width: 120px;
+    right: 85%; /* Floats near the 4rem gap boundary */
+    width: 110px;
   }
 
   .floater-logo-glass {
-    right: 15%;
-    width: 80px;
-    height: 80px;
+    right: 15%; /* Keep right */
+    width: 100px;
+    height: 100px;
   }
 
   .floater-tag {
