@@ -1,20 +1,36 @@
 <header class="navbar-wrapper">
   <div class="container">
     <nav class="navbar glass-panel">
-      <a routerLink="/" class="logo">
-        <span class="logo-icon">🔥</span> <span class="text-gradient">CharityBites</span>
-      </a>
+      
+      <div class="nav-brand-area">
+        <a routerLink="/" class="logo">
+          <span class="logo-icon">🔥</span> <span class="text-gradient">CharityBites</span>
+        </a>
+        
+        <div class="mobile-top-actions">
+          <a routerLink="/cart" class="mobile-cart-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <span class="cart-badge badge-mobile pulse-badge" *ngIf="cartItemCount > 0">{{ cartItemCount }}</span>
+          </a>
+          <button (click)="lang.toggle()" class="lang-btn mobile-lang-btn">{{ lang.currentLang() === 'vi' ? '🇻🇳 VN' : '🇬🇧 EN' }}</button>
+        </div>
+      </div>
+
       <div class="nav-links">
         <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{ lang.t.NAV.HOME }}</a>
         <a routerLink="/menu" routerLinkActive="active">{{ lang.t.NAV.MENU }}</a>
-        <a routerLink="/cart" routerLinkActive="active" class="cart-link">
+        <a routerLink="/cart" routerLinkActive="active" class="cart-link desktop-only">
           {{ lang.t.NAV.CART }} 
           <span class="cart-badge pulse-badge" *ngIf="cartItemCount > 0">{{ cartItemCount }}</span>
         </a>
-        <button class="btn btn-outline create-order-btn" (click)="openCreateOrderModal()">
+        <button class="btn btn-outline create-order-btn desktop-only" (click)="openCreateOrderModal()">
           ✨ {{ lang.t.CREATE_ORDER.BTN }}
         </button>
-        <button (click)="lang.toggle()" class="lang-btn">{{ lang.currentLang() === 'vi' ? '🇻🇳 VN' : '🇬🇧 EN' }}</button>
+        <button (click)="lang.toggle()" class="lang-btn desktop-only">{{ lang.currentLang() === 'vi' ? '🇻🇳 VN' : '🇬🇧 EN' }}</button>
       </div>
     </nav>
   </div>
@@ -32,5 +48,9 @@
     </div>
   </div>
 </footer>
+
+<button class="floating-fab mobile-only extended-fab" (click)="openCreateOrderModal()">
+  <span>✨</span> <span>{{ lang.t.CREATE_ORDER.BTN }}</span>
+</button>
 
 <app-create-order-modal *ngIf="isCreateOrderModalOpen" (close)="closeCreateOrderModal()"></app-create-order-modal>
