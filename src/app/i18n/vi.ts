@@ -43,7 +43,7 @@ export const vi = {
     STAT_3_V: 'Vô giá',
     STAT_3_U: '✨',
     STAT_3_D: 'Lan toả yêu thương',
-    FOOTER_TEXT: '© 2026 Charity Food Order. Lan tỏa yêu thương.'
+    FOOTER_TEXT: '© 2026 CharityBites. Lan tỏa yêu thương.'
   },
   MENU: {
     BADGE: '🤤 Bụng Đói Khách Kêu',

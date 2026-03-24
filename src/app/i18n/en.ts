@@ -43,7 +43,7 @@ export const en = {
     STAT_3_V: 'Priceless',
     STAT_3_U: '✨',
     STAT_3_D: 'Spreading love',
-    FOOTER_TEXT: '© 2026 Charity Food Order. Spread the love.'
+    FOOTER_TEXT: '© 2026 CharityBites. Spread the love.'
   },
   MENU: {
     BADGE: '🤤 Hungry Tummies Calling',
