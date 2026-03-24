@@ -202,3 +202,61 @@
   from { transform: scale(0); }
   to { transform: scale(1); }
 }
+
+/* Modal Specific Green Theme Overrides */
+:host {
+  --modal-primary: #8CAC64;
+  --modal-primary-hover: #789950;
+  --modal-gradient: linear-gradient(135deg, #789950 0%, #8CAC64 100%);
+}
+
+.tag {
+  background: var(--modal-primary) !important;
+}
+
+.btn-primary {
+  background: var(--modal-gradient) !important;
+  box-shadow: 0 8px 24px -6px rgba(140, 172, 100, 0.4) !important;
+}
+
+.btn-primary:hover:not(:disabled) {
+  box-shadow: 0 14px 30px -6px rgba(140, 172, 100, 0.5) !important;
+}
+
+.btn-outline {
+  color: var(--modal-primary-hover) !important;
+  border-color: var(--modal-primary-hover) !important;
+}
+
+.btn-outline:hover:not(:disabled) {
+  background-color: rgba(140, 172, 100, 0.1) !important;
+}
+
+.form-fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+
+fieldset:disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.close-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.success-icon {
+  background: var(--modal-primary) !important;
+  box-shadow: 0 10px 20px rgba(140, 172, 100, 0.3) !important;
+}
