@@ -72,5 +72,20 @@ export const vi = {
     EMAIL_HELP: 'Sử dụng email công ty của bạn để xác nhận đơn hàng nội bộ.',
     BTN_CHECKOUT: 'Xác nhận & Gửi đi',
     BTN_LOADING: 'Đang xử lý...'
+  },
+  CREATE_ORDER: {
+    BTN: 'Tạo đơn để bán',
+    TITLE: 'Tạo Đơn Bán Hàng',
+    GROUP_NAME: 'Tên nhóm',
+    LEADER_EMAIL: 'Mail của leader',
+    DISH_NAME: 'Tên món ăn',
+    DESC: 'Mô tả',
+    DATE: 'Ngày giao hàng',
+    TYPE: 'Loại thức ăn',
+    IMAGE: 'Hình ảnh (URL)',
+    EMAILS: 'Email thành viên (nhấn Enter)',
+    PRICE: 'Giá tiền',
+    SUBMIT: 'Tạo đơn',
+    CANCEL: 'Hủy'
   }
 };

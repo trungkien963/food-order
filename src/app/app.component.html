@@ -11,6 +11,9 @@
           {{ lang.t.NAV.CART }} 
           <span class="cart-badge pulse-badge" *ngIf="cartItemCount > 0">{{ cartItemCount }}</span>
         </a>
+        <button class="btn btn-outline create-order-btn" (click)="openCreateOrderModal()">
+          ✨ {{ lang.t.CREATE_ORDER.BTN }}
+        </button>
         <button (click)="lang.toggle()" class="lang-btn">{{ lang.currentLang() === 'vi' ? '🇻🇳 VN' : '🇬🇧 EN' }}</button>
       </div>
     </nav>
@@ -29,3 +32,5 @@
     </div>
   </div>
 </footer>
+
+<app-create-order-modal *ngIf="isCreateOrderModalOpen" (close)="closeCreateOrderModal()"></app-create-order-modal>

@@ -10,8 +10,10 @@ export class DataService {
   private http = inject(HttpClient);
   // Using Google Sheets gviz CSV endpoint to bypass CORS issues
   private sheetUrl = 'https://docs.google.com/spreadsheets/d/13o5Aa1qbwIf_c5VLyDKKP2laNgJZg6yFLNijumuDgjM/gviz/tq?tqx=out:csv&sheet=Sheet1';
+  private masterDataUrl = 'https://docs.google.com/spreadsheets/d/13o5Aa1qbwIf_c5VLyDKKP2laNgJZg6yFLNijumuDgjM/gviz/tq?tqx=out:csv&sheet=Master_Data';
 
   private cachedDishes$!: Observable<Dish[]>;
+  private cachedDishTypes$!: Observable<string[]>;
   private validEmails: Set<string> = new Set();
 
   private mockDishes: Dish[] = [
@@ -102,6 +104,61 @@ export class DataService {
         return this.validEmails.has(email.trim().toLowerCase());
       })
     );
+  }
+
+  getValidEmails(): string[] {
+    return Array.from(this.validEmails);
+  }
+
+  // NOTE: Replace this with your actual deployed Google Apps Script Web App URL
+  private scriptUrl = 'https://script.google.com/macros/s/AKfycbwSzcMlwH0SsGuZM6PPtx-wU2x2aaUSRnkt7a1sA-1BlZRI81dhRZgq75trticvQYX1mQ/exec';
+
+  getDishTypes(): Observable<string[]> {
+    if (!this.cachedDishTypes$) {
+      this.cachedDishTypes$ = this.http.get(this.masterDataUrl, { responseType: 'text' }).pipe(
+        map(csv => {
+          const lines = csv.split('\n');
+          if (lines.length <= 1) return [];
+          
+          const headers = this.parseLine(lines[0]).map(h => h.trim().toLowerCase());
+          const catIdx = headers.findIndex(h => h.includes('category') || h.includes('loại'));
+          const emailIdx = headers.findIndex(h => h.includes('email'));
+          
+          const types = new Set<string>();
+          
+          for (let i = 1; i < lines.length; i++) {
+            const line = lines[i].trim();
+            if (!line) continue;
+            const row = this.parseLine(line);
+            
+            if (catIdx >= 0 && row[catIdx] && row[catIdx].trim()) {
+              types.add(row[catIdx].trim());
+            }
+            if (emailIdx >= 0 && row[emailIdx] && row[emailIdx].trim()) {
+              this.validEmails.add(row[emailIdx].trim().toLowerCase());
+            }
+          }
+          
+          return Array.from(types).filter(t => t.length > 0);
+        }),
+        catchError(err => {
+          console.error('Error fetching Master Data CSS:', err);
+          return of(['Cơm tấm', 'Đồ cuốn', 'Trà sữa', 'Bánh tráng trộn', 'Đồ rán', 'Nước giải khát', 'Khác']);
+        }),
+        shareReplay(1)
+      );
+    }
+    return this.cachedDishTypes$;
+  }
+
+  createOrderToSheet(orderData: any): Observable<any> {
+    // Sending data as JSON POST. Google Apps Script's doPost(e) will receive this in e.postData.contents
+    return this.http.post(this.scriptUrl, orderData, {
+      headers: {
+        'Content-Type': 'text/plain;charset=utf-8' // Using text/plain prevents CORS preflight OPTIONS request
+      },
+      responseType: 'text' // expects text output from Apps Script to avoid JSON parse errors on CORS
+    });
   }
 
   private parseCsv(csv: string): Dish[] {

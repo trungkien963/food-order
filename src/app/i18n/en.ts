@@ -72,5 +72,20 @@ export const en = {
     EMAIL_HELP: 'Use your company email to confirm this internal order.',
     BTN_CHECKOUT: 'Confirm & Submit',
     BTN_LOADING: 'Processing...'
+  },
+  CREATE_ORDER: {
+    BTN: 'Create Sale Order',
+    TITLE: 'Create Sale Order',
+    GROUP_NAME: 'Group Name',
+    LEADER_EMAIL: 'Leader Email',
+    DISH_NAME: 'Dish Name',
+    DESC: 'Description',
+    DATE: 'Delivery Date',
+    TYPE: 'Food Category',
+    IMAGE: 'Image (URL/Optional)',
+    EMAILS: 'Member Emails (press Enter)',
+    PRICE: 'Price',
+    SUBMIT: 'Submit',
+    CANCEL: 'Cancel'
   }
 };

@@ -175,3 +175,19 @@
 .lang-btn:hover {
   background: var(--surface);
 }
+
+.create-order-btn {
+  padding: 0.4rem 1rem !important;
+  font-size: 0.9rem !important;
+  animation: pulse-badge 3s infinite;
+  box-shadow: 0 4px 15px rgba(255, 90, 95, 0.2);
+  border-color: var(--primary-light);
+}
+
+.create-order-btn:hover {
+  background: linear-gradient(135deg, var(--primary) 0%, #FF7074 100%);
+  color: white;
+  animation: none;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 90, 95, 0.4);
+}
