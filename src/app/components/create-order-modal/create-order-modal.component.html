@@ -4,26 +4,25 @@
     <!-- HEADER -->
     <div class="modal-header">
       <h2 *ngIf="!submitSuccess && !submitError">{{ lang.t.CREATE_ORDER.TITLE }}</h2>
-      <h2 *ngIf="submitSuccess" style="color: var(--success);">Thành Công!</h2>
-      <h2 *ngIf="submitError" style="color: var(--error);">⚠️ Đã xảy ra lỗi</h2>
+      <h2 *ngIf="submitSuccess" style="color: var(--success);">{{ lang.t.CREATE_ORDER.SUCCESS_HDR }}</h2>
+      <h2 *ngIf="submitError" style="color: var(--error);">{{ lang.t.CREATE_ORDER.ERROR_HDR }}</h2>
       <button class="close-btn" (click)="onClose()" [disabled]="isSubmitting">&times;</button>
     </div>
 
     <!-- SUCCESS VIEW -->
     <div class="modal-body success-view" *ngIf="submitSuccess">
       <div class="success-icon">✓</div>
-      <h3>Tạo đơn thành công!</h3>
-      <p>Đơn của bạn đã được đóng gói và gửi lên trang <strong>Sale_Order</strong> trên hệ thống Google Sheet an toàn.
-      </p>
-      <button class="btn btn-primary mt-4" (click)="onClose()">Đóng cửa sổ</button>
+      <h3>{{ lang.t.CREATE_ORDER.SUCCESS_MSG }}</h3>
+      <p [innerHTML]="lang.t.CREATE_ORDER.SUCCESS_DETAIL"></p>
+      <button class="btn btn-primary mt-4" (click)="onClose()">{{ lang.t.CREATE_ORDER.BTN_CLOSE }}</button>
     </div>
 
     <!-- ERROR VIEW -->
     <div class="modal-body error-view" *ngIf="submitError">
       <div class="error-icon">✕</div>
-      <h3>Opps! Không thể lưu</h3>
+      <h3>{{ lang.t.CREATE_ORDER.ERROR_MSG }}</h3>
       <p class="error-detail">{{ submitError }}</p>
-      <button class="btn btn-outline mt-4" (click)="submitError = ''">Thử lại</button>
+      <button class="btn btn-outline mt-4" (click)="submitError = ''">{{ lang.t.CREATE_ORDER.BTN_RETRY }}</button>
     </div>
 
     <!-- FORM VIEW -->
@@ -67,7 +66,7 @@
             <label class="input-label">{{ lang.t.CREATE_ORDER.TYPE }} <span class="required">*</span></label>
             <select formControlName="foodType" class="input-field"
               [class.input-error]="orderForm.get('foodType')?.invalid && orderForm.get('foodType')?.touched">
-              <option value="" disabled>--- Chọn loại ---</option>
+              <option value="" disabled>{{ lang.t.CREATE_ORDER.SELECT_TYPE }}</option>
               <option *ngFor="let type of dishTypes" [value]="type">{{ type }}</option>
             </select>
           </div>
@@ -96,10 +95,9 @@
       </fieldset>
 
       <div class="modal-footer" style="padding: 1.5rem 0 0 0; border: none;">
-        <button type="button" class="btn btn-outline" (click)="onClose()" [disabled]="isSubmitting">{{
-          lang.t.CREATE_ORDER.CANCEL }}</button>
+        <button type="button" class="btn btn-outline" (click)="onClose()" [disabled]="isSubmitting">{{ lang.t.CREATE_ORDER.CANCEL }}</button>
         <button type="submit" class="btn btn-primary" [disabled]="isSubmitting">
-          {{ isSubmitting ? 'Đang gửi Wecare...' : lang.t.CREATE_ORDER.SUBMIT }}
+          {{ isSubmitting ? lang.t.CREATE_ORDER.BTN_LOADING : lang.t.CREATE_ORDER.SUBMIT }}
         </button>
       </div>
     </form>

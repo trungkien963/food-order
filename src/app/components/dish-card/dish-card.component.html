@@ -34,13 +34,13 @@
     
     <div class="description-box" (click)="openDetail()" style="cursor: pointer;">
       <p class="description" [style.display]="'block'">
-        {{ dish.description || 'Món ăn cực kì hấp dẫn. Bấm để xem thêm...' }}
+        {{ dish.description || lang.t.DISH_CARD.DESC_FALLBACK }}
       </p>
     </div>
     
     <div class="action-footer">
       <button class="order-btn" (click)="order.emit(dish)">
-        <span class="btn-text">Thưởng thức</span>
+        <span class="btn-text">{{ lang.t.DISH_CARD.BTN_ENJOY }}</span>
         <div class="btn-icon-wrapper">
           <svg class="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
             <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -69,11 +69,11 @@
       <div class="modal-price">{{ formattedPrice }} <span style="font-size: 1.2rem; margin-left: 2px;">đ</span></div>
       
       <div class="modal-desc-full">
-        {{ dish.description || 'Chưa có thông tin mô tả cho món này. Hãy thưởng thức và chia sẻ cảm nhận nhé!' }}
+        {{ dish.description || lang.t.DISH_CARD.MODAL_DESC_FALLBACK }}
       </div>
       
       <button class="order-btn modal-order-btn" style="box-shadow: none; justify-content: center; padding: 1rem;" (click)="order.emit(dish); closeDetail()">
-         Thêm vào giỏ hàng
+         {{ lang.t.DISH_CARD.MODAL_BTN_ADD }}
       </button>
     </div>
   </div>

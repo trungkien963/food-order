@@ -1,22 +1,22 @@
 <div class="container fade-in">
   <div class="cart-header">
-    <h2 class="section-title">{{ lang.t.CART.CART_TITLE }} quyên góp</h2>
-    <p class="section-subtitle" *ngIf="count > 0">Bạn đang lan tỏa yêu thương với {{count}} phần ăn!</p>
+    <h2 class="section-title">{{ lang.t.CART.CART_MAIN_TITLE }}</h2>
+    <p class="section-subtitle" *ngIf="count > 0">{{ lang.t.CART.SPREAD_LOVE_1 }} {{count}} {{ lang.t.CART.SPREAD_LOVE_2 }}</p>
   </div>
 
   <div class="success-message glass-panel" *ngIf="orderSuccess">
     <div class="success-icon">💜</div>
-    <h3>Cảm ơn bạn rất nhiều!</h3>
-    <p>Đơn hàng của bạn đã được ghi nhận. Hệ thống sẽ trích 100% lợi nhuận để đóng góp vào quỹ từ thiện.</p>
-    <a routerLink="/menu" class="btn btn-primary mt-4">Về trang Thực đơn</a>
+    <h3>{{ lang.t.CART.SUCCESS_TITLE }}</h3>
+    <p>{{ lang.t.CART.SUCCESS_DESC }}</p>
+    <a routerLink="/menu" class="btn btn-primary mt-4">{{ lang.t.CART.BACK_MENU }}</a>
   </div>
 
   <div class="cart-content" *ngIf="!orderSuccess">
     <div class="empty-state glass-panel" *ngIf="count === 0">
       <div class="empty-icon">🍽️</div>
-      <h3>{{ lang.t.CART.CART_TITLE }} đang trống</h3>
-      <p>Hãy chọn những món ăn ngon lành từ thực đơn nhé.</p>
-      <a routerLink="/menu" class="btn btn-primary mt-4 pulse-btn">Xem Thực đơn</a>
+      <h3>{{ lang.t.CART.CART_TITLE }} {{ lang.t.CART.EMPTY_STATE }}</h3>
+      <p>{{ lang.t.CART.EMPTY_DESC }}</p>
+      <a routerLink="/menu" class="btn btn-primary mt-4 pulse-btn">{{ lang.t.CART.EMPTY_BTN }}</a>
     </div>
 
     <div class="cart-layout" *ngIf="count > 0">
@@ -29,31 +29,31 @@
           </div>
           <div class="item-actions">
             <input type="number" class="input-field qty-input" [value]="item.quantity" (change)="updateQty(item.dish.id, $event)" min="1">
-            <button class="btn-icon" (click)="remove(item.dish.id)" title="Xóa">🗑️</button>
+            <button class="btn-icon" (click)="remove(item.dish.id)" [title]="lang.t.CART.BTN_DELETE">🗑️</button>
           </div>
         </div>
       </div>
 
       <div class="checkout-panel glass-panel">
-        <h3>Tổng kết</h3>
+        <h3>{{ lang.t.CART.SUMMARY }}</h3>
         <div class="summary-row">
-          <span>Tổng số lượng:</span>
-          <strong>{{ count }} món</strong>
+          <span>{{ lang.t.CART.TOTAL_ITEMS }}</span>
+          <strong>{{ count }} {{ lang.t.CART.UNIT_DISH }}</strong>
         </div>
         <div class="summary-row total">
-          <span>Tổng cộng:</span>
+          <span>{{ lang.t.CART.TOTAL_PRICE }}</span>
           <strong class="total-price">{{ formatPrice(total) }}</strong>
         </div>
 
         <div class="checkout-form">
           <div class="input-group">
-            <label class="input-label">Email xác nhận đơn hàng *</label>
-            <input type="email" class="input-field" [class.input-error]="emailError" [(ngModel)]="email" placeholder="Nhập email của bạn...">
+            <label class="input-label">{{ lang.t.CART.EMAIL_LABEL }}</label>
+            <input type="email" class="input-field" [class.input-error]="emailError" [(ngModel)]="email" [placeholder]="lang.t.CART.EMAIL_PLACEHOLDER">
             <span class="error-text" *ngIf="emailError">{{ emailError }}</span>
           </div>
-          <p class="info-text">Note: Email này sẽ được check tự động trên dữ liệu Google Sheet. Hiện tại đang mock data.</p>
+          <p class="info-text">{{ lang.t.CART.EMAIL_HELP }}</p>
           <button class="btn btn-primary checkout-btn" (click)="checkout()" [disabled]="isSubmitting">
-            {{ isSubmitting ? '{{ lang.t.CART.BTN_LOADING }}' : 'Xác nhận Đặt món' }}
+            {{ isSubmitting ? lang.t.CART.BTN_LOADING : lang.t.CART.BTN_CHECKOUT }}
           </button>
         </div>
       </div>
