@@ -161,6 +161,15 @@ export class DataService {
     });
   }
 
+  submitEmployeeOrderToSheet(orderData: any): Observable<any> {
+    return this.http.post(this.scriptUrl, orderData, {
+      headers: {
+        'Content-Type': 'text/plain;charset=utf-8'
+      },
+      responseType: 'text'
+    });
+  }
+
   private parseCsv(csv: string): Dish[] {
     const lines = csv.split('\n');
     if (lines.length <= 1) return this.mockDishes; // empty sheet fallback
